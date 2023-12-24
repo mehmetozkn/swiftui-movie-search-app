@@ -3,46 +3,18 @@ import Foundation
 import SwiftUI
 
 class MovieViewModel: ObservableObject {
-
-    @Published var movies = [SpecialMovieViewModel]()
-    let httpDownloader = HttpDownloader()
-
-    func searchMovie(movieName: String) {
-        httpDownloader.fetchMovies(search: movieName) { (result) in
-            switch result {
-            case .success(let movieArray):
-                if let movieArray = movieArray {
-                    DispatchQueue.main.async {
-                        self.movies = movieArray.map(SpecialMovieViewModel.init)
-                    }
-
-                }
-
-            case .failure(let error):
-                print(error)
-
-            }
+    
+    @Published var searchedMovies: [Movie] = []
+    private let client = APIClient.shared
+    
+    @MainActor
+    func searchMovies(search: String) async {
+        do {
+            searchedMovies = try await client.fetchMovies(search: search)
+        } catch {
+            print("Error fetching movies: \(error)")
         }
     }
 }
 
-// for fetch only requested information
-struct SpecialMovieViewModel {
-    let movie: Movie
 
-    var title: String {
-        movie.title
-    }
-
-    var poster: String {
-        movie.poster
-    }
-
-    var year: String {
-        movie.year
-    }
-
-    var imdbId: String {
-        movie.imbdId
-    }
-}

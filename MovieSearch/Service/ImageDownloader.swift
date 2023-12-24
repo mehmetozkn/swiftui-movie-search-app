@@ -12,7 +12,6 @@ class ImageDownloader: ObservableObject {
             return
         }
 
-
         URLSession.shared.dataTask(with: imageUrl) { data, response, error in
             guard let data = data, error == nil else {
                 return
@@ -21,8 +20,6 @@ class ImageDownloader: ObservableObject {
                 self.downloadedImage = data
             }
 
-
         }.resume()
-
     }
 }

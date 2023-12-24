@@ -5,7 +5,7 @@ import SwiftUI
 struct MovieSearchApp: App {
     var body: some Scene {
         WindowGroup {
-            MovieListView()
+            MovieSearchView()
         }
     }
 }

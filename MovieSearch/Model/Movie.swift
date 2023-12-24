@@ -10,7 +10,6 @@ struct Movie : Codable {
     let type : String
     let poster : String
     
-    
     private enum CodingKeys: String, CodingKey {
         case title = "Title"
         case year = "Year"
@@ -21,7 +20,7 @@ struct Movie : Codable {
 }
 
 
-struct IncomingMovies : Codable {
+struct MoviesResponse : Codable {
     let movies : [Movie]
     
     private enum CodingKeys : String, CodingKey {

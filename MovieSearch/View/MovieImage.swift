@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct PrivateImage: View {
+struct MovieImage: View {
     
     let url : String
     @ObservedObject var imageDownloander = ImageDownloader()
