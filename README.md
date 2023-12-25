@@ -11,6 +11,7 @@ SwiftUI Movie Search App
 
 - MVVM Design Pattern
 - OMDb API
+- URLSession
 
 ### Screens
 
