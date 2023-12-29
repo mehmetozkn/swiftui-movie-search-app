@@ -7,11 +7,13 @@ SwiftUI Movie Search App
 - Search and list movies by keyword
 - Selecting a movie from the list and seeing its details
 
-### Tech Stack
+### Includes
 
+- Generic Network Layer
 - MVVM Design Pattern
 - OMDb API
 - URLSession
+- Clean Folder Organization
 
 ### Screens
 
