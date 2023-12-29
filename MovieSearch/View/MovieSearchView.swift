@@ -3,10 +3,7 @@
 import SwiftUI
 
 struct MovieSearchView: View {
-    private let movieImageWidthSize = UIScreen.main.bounds.width * 0.2
-    private let movieImageHeightSize = UIScreen.main.bounds.height * 0.13
-    private let textFieldText = "Search movies"
-    private let navigationTitleText = "Movie Search"
+
     
     @ObservedObject private var viewModel = MovieViewModel()
     
@@ -15,7 +12,7 @@ struct MovieSearchView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField(textFieldText, text: $searchMovie, onCommit: {
+                TextField(AppConstants.shared.textFieldText, text: $searchMovie, onCommit: {
                     Task {
                         do {
                             await viewModel.searchMovies(search: searchMovie.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -29,7 +26,7 @@ struct MovieSearchView: View {
                 List(viewModel.searchedMovies, id: \.imbdId) { movie in
                     NavigationLink(destination: MovieDetailView(imdbId: movie.imbdId), label: {
                         HStack {
-                            MovieImage(movieImageWidthSize: movieImageWidthSize, movieImageHeightSize: movieImageHeightSize, url: movie.poster)
+                            MovieImage(movieImageWidthSize: AppConstants.shared.movieImageWidthSize, movieImageHeightSize: AppConstants.shared.movieImageHeightSize, url: movie.poster)
                                 
                             VStack(alignment: .leading) {
                                 
@@ -48,7 +45,6 @@ struct MovieSearchView: View {
                 }
                 .listStyle(.plain)
             }
-            .navigationTitle(navigationTitleText)
         }
     }
 }

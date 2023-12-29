@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6435B3AB2B3F3BA100AAF058 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6435B3AA2B3F3BA100AAF058 /* AppConstants.swift */; };
 		6471189A2B38AC500069D339 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647118992B38AC500069D339 /* CircularProgressView.swift */; };
 		64A30EE32B3E1BE9003CA9AF /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A30EE22B3E1BE9003CA9AF /* Request.swift */; };
 		64A30EE52B3E1CD6003CA9AF /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A30EE42B3E1CD6003CA9AF /* HTTPMethod.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6435B3AA2B3F3BA100AAF058 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		647118992B38AC500069D339 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		64A30EE22B3E1BE9003CA9AF /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		64A30EE42B3E1CD6003CA9AF /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				858B22772ABA103D007498D0 /* Assets.xcassets */,
 				858B22792ABA103D007498D0 /* Preview Content */,
 				85E4D4672ABA535200067E23 /* MovieSearchApp.swift */,
+				6435B3AA2B3F3BA100AAF058 /* AppConstants.swift */,
 			);
 			path = MovieSearch;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				64A30EE32B3E1BE9003CA9AF /* Request.swift in Sources */,
 				858B22762ABA103C007498D0 /* MovieSearchView.swift in Sources */,
 				858B228C2ABA1FBC007498D0 /* MovieViewModel.swift in Sources */,
+				6435B3AB2B3F3BA100AAF058 /* AppConstants.swift in Sources */,
 				858B22872ABA108F007498D0 /* Movie.swift in Sources */,
 				858B228A2ABA12B5007498D0 /* APIClient.swift in Sources */,
 				85E4D4682ABA535200067E23 /* MovieSearchApp.swift in Sources */,

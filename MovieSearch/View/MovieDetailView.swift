@@ -2,8 +2,7 @@
 import SwiftUI
 
 struct MovieDetailView: View {
-    private let movieImageWidthSize =  UIScreen.main.bounds.width * 0.6
-    private let movieImageHeightSize =  UIScreen.main.bounds.height * 0.3
+
     
     @ObservedObject private var viewModel = MovieDetailViewModel()
     let imdbId: String
@@ -14,7 +13,7 @@ struct MovieDetailView: View {
     
     var body: some View {
             VStack {
-                MovieImage(movieImageWidthSize: movieImageWidthSize, movieImageHeightSize: movieImageHeightSize, url: viewModel.movieDetail?.poster ?? "")
+                MovieImage(movieImageWidthSize: AppConstants.shared.movieDetailImageWidthSize, movieImageHeightSize: AppConstants.shared.movieDetailImageWidthSize, url: viewModel.movieDetail?.poster ?? "")
                    
                 
                 Text(viewModel.movieDetail?.title ?? "")
@@ -22,14 +21,11 @@ struct MovieDetailView: View {
                     .bold()
                     .padding()
                 
-                Text("Year: \(viewModel.movieDetail?.year ?? "No Year")")
-                    .padding()
+                viewModel.trimText("Year: ", value: viewModel.movieDetail?.year ?? "No Year")
                 
-                Text("Director: \(viewModel.movieDetail?.director ?? "No Director")")
-                    .padding()
+                viewModel.trimText("Director: ", value: viewModel.movieDetail?.director ?? "No Director")
                 
-                Text("Writer: \(viewModel.movieDetail?.writer ?? "No Writer")")
-                    .padding()
+                viewModel.trimText("Writer: ", value: viewModel.movieDetail?.writer ?? "No Writer")
                 
             }.task {
                 await viewModel.getMovieDetails(imbdId: imdbId)
@@ -37,3 +33,9 @@ struct MovieDetailView: View {
     }
 }
 
+
+struct MovieDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        MovieDetailView(imdbId: "")
+    }
+}

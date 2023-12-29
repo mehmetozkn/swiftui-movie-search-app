@@ -3,14 +3,13 @@
 import Foundation
 import SwiftUI
 
-
+@MainActor
 class MovieDetailViewModel : ObservableObject{
     
     @Published var movieDetail : MovieDetail?
     @Published var isLoading : Bool = false
     private let client = APIClient.shared
-    
-    @MainActor
+ 
     func getMovieDetails(imbdId: String) async {
         let request = MovieDetailsRequest(imbdId: imbdId)
         do {
@@ -20,5 +19,9 @@ class MovieDetailViewModel : ObservableObject{
             print("Error fetching movies: \(error)")
         }
     }
+    
+     func trimText(_ title: String, value: String) -> some View {
+           Text("\(title): \(value)")
+       }
 }
 
