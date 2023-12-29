@@ -12,8 +12,9 @@ class MovieDetailViewModel : ObservableObject{
     
     @MainActor
     func getMovieDetails(imbdId: String) async {
+        let request = MovieDetailsRequest(imbdId: imbdId)
         do {
-            movieDetail = try await client.fetchMovieDetails(imdbId: imbdId)
+            movieDetail = try await client.send(request)
             isLoading = true
         } catch {
             print("Error fetching movies: \(error)")

@@ -20,7 +20,7 @@ struct Movie : Codable {
 }
 
 
-struct MoviesResponse : Codable {
+struct MovieArray : Codable {
     let movies : [Movie]
     
     private enum CodingKeys : String, CodingKey {

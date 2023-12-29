@@ -9,8 +9,9 @@ class MovieViewModel: ObservableObject {
     
     @MainActor
     func searchMovies(search: String) async {
+        let request = MoviesRequest(search: search)
         do {
-            searchedMovies = try await client.fetchMovies(search: search)
+            searchedMovies = try await client.send(request).movies
         } catch {
             print("Error fetching movies: \(error)")
         }
