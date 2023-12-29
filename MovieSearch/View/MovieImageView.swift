@@ -2,23 +2,29 @@
 import SwiftUI
 
 struct MovieImage: View {
-    
+    let movieImageWidthSize : CGFloat
+    let movieImageHeightSize :CGFloat
     let url : String
-    @ObservedObject var imageDownloander = ImageDownloader()
     
-    init(url: String) {
+    init(movieImageWidthSize: CGFloat, movieImageHeightSize: CGFloat, url: String) {
+        self.movieImageWidthSize = movieImageWidthSize
+        self.movieImageHeightSize = movieImageHeightSize
         self.url = url
-        self.imageDownloander.imageDownload(url: self.url)
     }
     
     var body: some View {
-        if let data = self.imageDownloander.downloadedImage {
-            return Image(uiImage: UIImage(data: data)!)
-                .resizable()
-        }else {
-            return Image("placeholder")
-                .resizable()
-            
+        AsyncImage(url: imageUrl(url: url)) { image in
+            image
+                .image?.resizable()
+                .frame(width:movieImageWidthSize,
+                       height: movieImageHeightSize)
         }
+            
+    }
+    
+    func imageUrl(url: String) -> URL {
+        return URL(string: url) ?? URL(string: "placeholder")!
     }
 }
+
+

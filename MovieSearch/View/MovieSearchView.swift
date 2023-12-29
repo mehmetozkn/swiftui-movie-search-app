@@ -29,10 +29,8 @@ struct MovieSearchView: View {
                 List(viewModel.searchedMovies, id: \.imbdId) { movie in
                     NavigationLink(destination: MovieDetailView(imdbId: movie.imbdId), label: {
                         HStack {
-                            MovieImage(url: movie.poster)
-                                .frame(width: movieImageWidthSize
-                                       , height: movieImageHeightSize)
-                            
+                            MovieImage(movieImageWidthSize: movieImageWidthSize, movieImageHeightSize: movieImageHeightSize, url: movie.poster)
+                                
                             VStack(alignment: .leading) {
                                 
                                 Text(movie.title)

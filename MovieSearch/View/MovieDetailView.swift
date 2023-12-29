@@ -14,9 +14,8 @@ struct MovieDetailView: View {
     
     var body: some View {
             VStack {
-                MovieImage(url: viewModel.movieDetail?.poster ?? "")
-                    .frame(width:movieImageWidthSize,
-                           height: movieImageHeightSize, alignment: .center)
+                MovieImage(movieImageWidthSize: movieImageWidthSize, movieImageHeightSize: movieImageHeightSize, url: viewModel.movieDetail?.poster ?? "")
+                   
                 
                 Text(viewModel.movieDetail?.title ?? "")
                     .font(.largeTitle)
