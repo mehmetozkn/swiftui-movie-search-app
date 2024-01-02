@@ -3,7 +3,6 @@
 import SwiftUI
 
 struct MovieSearchView: View {
-
     
     @ObservedObject private var viewModel = MovieViewModel()
     
@@ -23,27 +22,31 @@ struct MovieSearchView: View {
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 
-                List(viewModel.searchedMovies, id: \.imbdId) { movie in
-                    NavigationLink(destination: MovieDetailView(imdbId: movie.imbdId), label: {
-                        HStack {
-                            MovieImage(movieImageWidthSize: AppConstants.shared.movieImageWidthSize, movieImageHeightSize: AppConstants.shared.movieImageHeightSize, url: movie.poster)
+                if viewModel.isLoading {
+                    CircularProgressView()
+                } else {
+                    List(viewModel.searchedMovies, id: \.imbdId) { movie in
+                        NavigationLink(destination: MovieDetailView(imdbId: movie.imbdId), label: {
+                            HStack {
+                                MovieImage(movieImageWidthSize: AppConstants.shared.movieImageWidthSize, movieImageHeightSize: AppConstants.shared.movieImageHeightSize, url: movie.poster)
                                 
-                            VStack(alignment: .leading) {
-                                
-                                Text(movie.title)
-                                    .font(.title2)
-                                    .bold()
-                                    .foregroundColor(.orange)
-                                
-                                Text(movie.year)
-                                
-                                Spacer()
-                                
+                                VStack(alignment: .leading) {
+                                    
+                                    Text(movie.title)
+                                        .font(.title2)
+                                        .bold()
+                                        .foregroundColor(.orange)
+                                    
+                                    Text(movie.year)
+                                    
+                                    Spacer()
+                                    
+                                }
                             }
-                        }
-                    })
+                        })
+                    }
+                    .listStyle(.plain)
                 }
-                .listStyle(.plain)
             }
         }
     }

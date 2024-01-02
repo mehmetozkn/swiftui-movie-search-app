@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct MovieDetailView: View {
-
+    
     
     @ObservedObject private var viewModel = MovieDetailViewModel()
     let imdbId: String
@@ -12,9 +12,10 @@ struct MovieDetailView: View {
     }
     
     var body: some View {
-            VStack {
+        VStack {
+            if viewModel.isLoaded {
                 MovieImage(movieImageWidthSize: AppConstants.shared.movieDetailImageWidthSize, movieImageHeightSize: AppConstants.shared.movieDetailImageWidthSize, url: viewModel.movieDetail?.poster ?? "")
-                   
+                
                 
                 Text(viewModel.movieDetail?.title ?? "")
                     .font(.largeTitle)
@@ -27,9 +28,12 @@ struct MovieDetailView: View {
                 
                 viewModel.trimText("Writer: ", value: viewModel.movieDetail?.writer ?? "No Writer")
                 
-            }.task {
-                await viewModel.getMovieDetails(imbdId: imdbId)
+            } else {
+                CircularProgressView()
             }
+        }.task {
+            await viewModel.getMovieDetails(imbdId: imdbId)
+        }
     }
 }
 
